@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class Inventory
 {
-    private List<Item> items;
+    public List<Item> items;
     private float weight;
     private float maximumWeight;
+    public bool escape = false;
 
     public Inventory()
     {
         items = new List<Item>();
         weight = 0;
-        maximumWeight = 100;
+        maximumWeight = 200;
     }
 
     public Inventory(float maximumWeight) : this()
@@ -57,6 +58,29 @@ public class Inventory
         }
 
         return success;
+    }
+
+    public bool Parts()
+    {
+        int raftParts = 0;
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] is RaftItem)
+            {
+                raftParts += 1;
+            }
+        }
+        if (raftParts > 4)
+        {
+            Debug.Log("YOU HAVE:" + raftParts);
+            escape = true;
+            return true;
+        }
+        else
+        {
+            Debug.Log("YOU HAVE:" + raftParts);
+            return false;
+        }
     }
 
     public bool HasItem(Item i)

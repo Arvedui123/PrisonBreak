@@ -7,11 +7,11 @@ using UnityEngine;
 public abstract class Item
 {
     //Properties
-    private string name;
-    private float weight;
+    public string name;
+    public float weight;
 
     //Constructor
-    protected Item(string name, float weight)
+    public Item(string name, float weight)
     {
         this.name = name;
         this.weight = weight;
